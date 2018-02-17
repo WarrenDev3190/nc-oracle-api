@@ -1,0 +1,8 @@
+version: '3'
+services:
+  app:
+    image: nc-oracle-api/dev:0.1
+    env_file:
+      - .env
+    ports:
+      - 4040:4040
