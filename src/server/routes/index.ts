@@ -10,5 +10,9 @@ import * as express from 'express';
 import createPingRouter from './ping';
 
 export default function configureRoutes(app: express.Application, config: NewsCart.ServerConfig): void {
+    app.use(function setApplicationHeaders(req, res, next) {
+        res.setHeader('x-nc-server-name', config.name);
+        next();
+    });
     app.use(createPingRouter(config));
 }

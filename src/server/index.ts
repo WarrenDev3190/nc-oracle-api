@@ -11,12 +11,16 @@ import * as express from 'express';
 import * as http from 'http';
 import * as bodyParser from 'body-parser';
 import * as morgan from 'morgan';
+import * as helmet from 'helmet';
+import * as cors from 'cors';
 import configureRoutes from './routes';
 
 const app: express.Application = express();
 export const server: http.Server = http.createServer(app);
 
 // Default Express Application Middleware
+app.use(helmet());
+app.use(cors());
 app.use(bodyParser.urlencoded({ 'extended': false }));
 app.use(bodyParser.json());
 app.use(morgan('combined'));
@@ -27,7 +31,7 @@ app.use(morgan('combined'));
  * @param config [description]
  */
 export function startServer(server: http.Server, config: NewsCart.ServerConfig): void {
-  console.info(`Starting NewsCartOracleAPI with config: ${JSON.stringify(config)}`);
+  console.info(`Starting NewsCartOracleAPI: ${config.name} with config: ${JSON.stringify(config)}`);
   console.info('Mounting Routers');
   configureRoutes(app, config);
   server.listen(config.port, (error: Error) => {
