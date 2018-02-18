@@ -8,6 +8,7 @@
  */
 
 const config: NewsCart.ServerConfig = {
+  name: process.env.SERVER_NAME || "default",
   port: parseInt(process.env.SERVER_CONFIG_PORT),
   routes: {
     "ping": {

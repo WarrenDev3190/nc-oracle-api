@@ -7,15 +7,16 @@
  * @Last modified time: 2018-02-17T13:40:17-06:00
  */
 
- declare module NewsCart {
-   interface RouteDefinition {
-       [key: string]: string;
-   }
+declare module NewsCart {
+    interface RouteDefinition {
+        [key: string]: string;
+    }
 
-   export interface ServerConfig {
-     port: number;
-       routes: {
-           [key: string]: RouteDefinition;
-       };
-   }
- }
+    export interface ServerConfig {
+        name?: string;
+        port: number;
+        routes: {
+            [key: string]: RouteDefinition;
+        };
+    }
+}
