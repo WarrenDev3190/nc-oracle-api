@@ -8,6 +8,7 @@
  */
 import * as express from 'express';
 import createPingRouter from './ping';
+import createParseRouter from './parse';
 
 export default function configureRoutes(app: express.Application, config: NewsCart.ServerConfig): void {
     app.use(function setApplicationHeaders(req, res, next) {
@@ -15,4 +16,5 @@ export default function configureRoutes(app: express.Application, config: NewsCa
         next();
     });
     app.use(createPingRouter(config));
+    app.use(createParseRouter(config));
 }

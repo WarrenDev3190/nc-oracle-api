@@ -13,6 +13,9 @@ const config: NewsCart.ServerConfig = {
   routes: {
     "ping": {
       "GET": process.env.SERVER_CONFIG_ROUTES_GET_PING
+    },
+    "parse": {
+      "PUT": process.env.SERVER_CONFIG_ROUTES_PUT_PARSE
     }
   }
 }

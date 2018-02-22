@@ -19,4 +19,9 @@ declare module NewsCart {
             [key: string]: RouteDefinition;
         };
     }
+
+    export interface Contact {
+        name?: string;
+        emailAddress: string;
+    }
 }
