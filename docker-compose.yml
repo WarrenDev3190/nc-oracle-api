@@ -1,0 +1,25 @@
+version: '3'
+services:
+  app:
+    image: nc-oracle-api/dev:1.0
+    container_name: app1
+    environment:
+      SERVER_NAME: APP1
+      SERVER_CONFIG_PORT: 4040
+    env_file:
+      - .env
+  app2:
+    image: nc-oracle-api/dev:1.0
+    container_name: app2
+    environment:
+      SERVER_NAME: APP2
+      SERVER_CONFIG_PORT: 4040
+    env_file:
+      - .env
+  nginx:
+    restart: always
+    build:  ./nginx/
+    ports:
+      - "4040:80"
+    links:
+      - app:app
